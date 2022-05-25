@@ -1,0 +1,26 @@
+name: Basic
+
+on:
+  workflow_dispatch
+  
+jobs:
+  gnu_parallel:
+    runs-on: ubuntu-20.04
+    name: GNU Parallel
+    
+    steps:
+      - name: Run
+        run: |
+          parallel -j 5 sleep ::: 30 30 30 30 30
+
+  matrix:
+    runs-on: ubuntu-20.04
+    name: Matrix
+    strategy:
+      matrix:
+        option: [30, 30, 30, 30, 30]
+
+    steps:
+      - name: Run
+        run: |
+          sleep 30s
